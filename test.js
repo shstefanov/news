@@ -38,7 +38,7 @@ function FileManager(dir) {
 	
 		var dirlist =  fs.readdirSync(path);
 		
-		console.log(path);
+		//console.log(path);
 		for (var idx in dirlist) {
 			
 			var name = dirlist[idx];
@@ -46,17 +46,18 @@ function FileManager(dir) {
 			d = dirlist[idx];
 			if (fs.statSync(p).isDirectory()){
 				
-				console.log(' ---->'+p);dirlist[idx] = dir_map(p);
+				//console.log(' ---->'+p);
+				dirlist[idx] = dir_map(p);
 				dirlist[idx].type = 'directory';
 				dirlist[idx].name = name;
 			}
 			else {
-				console.log(p);
+				//console.log(p);
 				dirlist[idx].type = 'file';
 				dirlist[idx].name = name;
 			}
 		}
-		console.log('<----'+path);
+		//console.log('<----'+path);
 		return dirlist;
 	}
 	
@@ -78,7 +79,7 @@ var DM = new DataManager();
 
 
 FM = new FileManager('./store');
-console.log(FM.list);
+console.log(FM.list[0][0][4]);
 
 
 
