@@ -22,18 +22,17 @@ function Harvester(){
 	
 	
 	
-		this.dom_selector = function (dom, callback){
+		this.explorer = function (dom, callback){
+			
 			//console.log(list);
 			for (var i in dom){
 				var el = dom[i];
-				if (el.type === "tag"){
-					
-					callback(el);
-					self.dom_selector(el.children, callback); //Racursive call of inner function
-				}//End if statement
+				callback(el);
+				self.explorer(el.children, callback); //Racursive call of inner function
+
 			
 			}//End of for statement
-		}//End find_dom() function
+		}//End this.explorer() function
 
 	
 	

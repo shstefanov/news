@@ -4,7 +4,7 @@ var FileManager = require	('./filemanager.js'	);
 var DataManager = require	('./datamanager.js'	);
 var HttpClient  = require	('./client.js'			);
 var Harvester 	 = require	('./harvester.js'		);
-var DB = require('nano')('http://localhost:5984');
+var DB = require('nano')	('http://localhost:5984');
 
 var newsdb = DB.use			("news"				);
 var HV = new Harvester		(						);
@@ -94,6 +94,10 @@ CL.get(request, function (dom){
 */
 
 var FocusNews = require('./focusnews.js');
-var FN = new FocusNews([request]);
+var FN = new FocusNews(['/?id=c134','/?id=c114']);
+
+
+
+FN.get(CL,HV);
 
 

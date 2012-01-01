@@ -14,6 +14,7 @@ function Client(hostname) {
 	var instance = http.createClient(80, host);
 	
 	this.get = function (req, callback) {
+		
 		request = instance.request('GET',req,{'host': host}); //req - the request
 		request.end();
 		request.on('response', function (response) {	
