@@ -4,7 +4,9 @@ var FileManager = require	('./filemanager.js'	);
 var DataManager = require	('./datamanager.js'	);
 var HttpClient  = require	('./client.js'			);
 var Harvester 	 = require	('./harvester.js'		);
+var DB = require('nano')('http://localhost:5984');
 
+var newsdb = DB.use			("news"				);
 var HV = new Harvester		(						);
 var FM = new FileManager	('./store'			);
 var DM = new DataManager	(						);
@@ -17,7 +19,7 @@ var CL = new HttpClient		('focus-news.net'	);
 
 
 var request = '/?id=c134';
-
+/*
 CL.get(request, function (dom){
 	//DM.put(request, dom);
 	
@@ -79,19 +81,19 @@ CL.get(request, function (dom){
 						c.text = text.split("\r").join("").split("\n").join("").split("  ").join("").split("\t").join("");
 				}
 			});//End HV.dom_selector(dom, function(el)
-		console.log('['+c.id+']-['+c.moment.day+','+c.moment.month+','+c.moment.year+' '+c.moment.hour+':'+c.moment.minute+']');
-		console.log('['+c.title+']');
-		console.log('['+c.text+']');
-		console.log();
+			
+			//Entering the data in the database:
+			newsdb.insert(c,c.id,function(){});
+			
 		});//End CL.get(c.request, function(dom)
 		
 	});//End DM.container.forEach(function(c)
 	
 });//End of CL.get(request, function (dom)
 
+*/
 
-
-
-
+var FocusNews = require('./focusnews.js');
+var FN = new FocusNews([request]);
 
 

@@ -25,7 +25,6 @@ function Client(hostname) {
 					if (error)
 						console.log(error);
 					else
-						//console.log(dom);
 						callback(dom);
         				
 				});
